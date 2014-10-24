@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>首页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Loading Bootstrap -->
+    <link href="/static/faltui/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/faltui/bootstrap/css/prettify.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/static/faltui/css/flat-ui.css" rel="stylesheet">
+    <link href="/static/faltui/css/docs.css" rel="stylesheet">
+    <link href="/static/default/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/faltui/images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="/static/faltui/js/html5shiv.js"></script>
+      <script src="/static/faltui/js/respond.min.js"></script>
+
+    <![endif]-->
+  </head>
+  <body>
+<nav style="border-radius:0;margin-bottom:0px;" class="navbar navbar-inverse navbar-embossed" role="navigation">
+  <div class="max-width layoutCenter ">
+		<div class="navbar-header" style="height:50px">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+			  <span class="sr-only">Toggle navigation</span>
+			</button>
+			<a class="navbar-brand" href="#">Flat UI</a>
+		</div>
+	  <div class="collapse navbar-collapse" id="navbar-collapse-01"  style="float:right" >
+	    <ul class="nav navbar-nav" >           
+	      <li class="active"><a href="index">首页</a></li>
+	      <li><a href="/configuration">在线定制</a></li>
+	      <li><a href="#fakelink">产品功能</a></li>
+	      <li><a href="#fakelink">合作案例</a></li>
+	      <li><a href="#fakelink">关于我们</a></li>
+	    </ul>
+	    <form class="navbar-form navbar-right" name="registerForm" action="#" role="search">
+	      <div class="form-group">
+	        <div class="input-group">
+	          <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+	          <span class="input-group-btn">
+	            <button type="submit" class="btn"><span class="fui-search"></span></button>
+	          </span>            
+	        </div>
+	      </div>               
+	    </form>
+	  </div><!-- /.navbar-collapse -->
+	</div>
+</nav>
+
+<!-- 这里显示 网站截图 -->
+<div class="bs-example overHidden clearBoth  layoutCenter" style="max-width:600px;" >
+ <div style="padding:10px;border:5px solid #eee;margin-top:100px;" >
+            <div style="margin-bottom:30px;border-bottom:3px solid #ddd;">
+                <h4>注册新用户<small style="color:#ccc">注册即可免费开通</small></h4>
+            </div>
+            <div class="single-panel-body">
+                <div class="single-panel-section" ng-show="show_signup">
+                    <form  name="register_form"  class="form-horizontal wt-form " method="post" action="/account/register">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">用户名：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" id="username" type="text" placeholder="由字母、数字、下划线组成，以字母开头" name="signup_name" ng-model="signup_name" wt-remote-unique-check="{url:'/api/user/name/check?name='}" wt-regex="^[A-Za-z]{1}[0-9A-Za-z_]{2,29}$" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">邮箱：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" type="email" placeholder="输入常用邮箱" name="signup_email" ng-model="signup_email" required="" wt-remote-unique-check="{url:'/api/user/email/check?email='}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">密码：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" type="password" placeholder="最小长度6位" name="signup_password" name="pass" ng-model="signup_password" ng-minlength="6" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">重复密码：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" type="password" placeholder="再输入一次" name="repeated_password" wt-repeat-password="signup_password" ng-model="repeated_password">
+                            </div>
+                        </div>
+
+<!--                         <div class="form-group ng-hide" ng-show="register_form.$errors.length > 0">
+                            <label class="col-xs-3 control-label"></label>
+
+                            <div class="col-xs-7">
+                                <div class="alert alert-danger ng-binding">
+                                    <i class="icon-remove-sign mr_5">msg</i> 
+                                </div>
+                            </div>
+                        </div> 
+ -->
+                        <div class="form-group">
+                            <div class="col-xs-3"></div>
+                            <div class="col-xs-7">
+                                <button name="button" wt-form-submit="js_submit(register_form)" type="submit" class="btn btn-primary" data-loading-text="注册中..." loading-status="is_registering">注册新用户
+                                </button>
+                            </div>
+                        </div>
+                        <input type="hidden" id="hasName" name="hasName" value="1"/>
+                        <div class="form-group btn-danger errorMsgBox" style="display: none">
+                            <label class="col-xs-3 control-label">错误信息：</label>
+                            <label class="text-left col-xs-7 errorMsg">
+                            </label>
+                        </div>
+                    </form>
+                </div>
+        </div>
+</div>
+</div><!-- .rowParent end -->
+    <script src="/static/faltui/js/jquery-1.8.3.min.js"></script>
+    <script src="/static/faltui/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/static/faltui/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/static/faltui/js/bootstrap.min.js"></script>
+    <script src="/static/faltui/js/bootstrap-select.js"></script>
+    <script src="/static/faltui/js/bootstrap-switch.js"></script>
+    <script src="/static/faltui/js/flatui-checkbox.js"></script>
+    <script src="/static/faltui/js/flatui-radio.js"></script>
+    <script src="/static/faltui/js/jquery.tagsinput.js"></script>
+    <script src="/static/faltui/js/jquery.placeholder.js"></script>
+    <script src="/static/faltui/js/typeahead.js"></script>
+    <script src="/static/faltui/bootstrap/js/google-code-prettify/prettify.js"></script>
+    <script src="/static/faltui/js/application.js"></script>
+    <script src="/static/default/js/validate.js"></script>
+<script>
+function is_empty(obj)
+{
+    var str = obj.val()
+    return str.match(/\s+/);
+}
+    $(document).ready(function(){
+            $('input[name="signup_name"]').on({
+                blur:function(e)
+                {
+                    if (!is_empty($(this))) {
+                        $.ajax({
+                            url:'/index/register?type=ajax',
+                            dataType:'json',
+                            type:'post',
+                            data:{username:$('#username').val()},
+                            success:function(data)
+                            {
+                                if (data) {
+                                    $('.errorMsgBox').css({display:"block"});
+                                    $('.errorMsg').html(data.msg);
+                                    $('#hasName').val('extend');
+                                } else {
+                                    $('.errorMsgBox').css({display:"none"});
+                                    $('#hasName').val(1);
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+           var validate = new FormValidator('register_form',[
+               {
+                   names:['signup_name'],
+                   display:{
+                       signup_name:[
+                           '用户名必须填写',
+                           '用户名不能小于6位',
+                           '用户名不能大于18位'
+                       ]
+                   },
+                   rules:'required|min_length[6]|max_length[18]'
+               },
+               {
+                   names:['signup_email'],
+                   display:{
+                       signup_email:[
+                           '邮箱填写不正确'
+                       ]
+                   },
+                   rules:'required|valid_email'
+               },
+                {
+                    names:['signup_password','repeated_password'],
+                    display:{
+                        signup_password:[
+                            '密码不能为空',
+                            '密码长度不能小于6位',
+                            '密码长度不能大于18位',
+                            '两次密码不一样',
+                            '两次密码不一样'
+                        ],
+                        repeated_password:[
+                            '确认密码不能为空',
+                            '密码长度不能小于6位',
+                            '密码长度不能大于18位',
+                            '两次密码不一样',
+                            '两次密码不一样'
+                        ]
+                    },
+                rules:'required|min_length[6]|max_length[18]|matches[signup_password]|matches[repeated_password]'
+                },
+               {
+                   names:['hasName'],
+                   display:{
+                       hasName:[
+                       '用户名不能为空',
+                       '用户名已存在'
+                       ]
+                   },
+                   rules:'required|integer'
+               }
+           ],validateErrorCallback);
+        function validateErrorCallback(errors)
+        {
+            var i = 0;
+            var str = '';
+            for(i in errors) {
+                var obj = errors[i].element;
+                obj.style.borderColor = '#e74c3c';
+                str += errors[i].message + '<br>';
+                $('.errorMsgBox').css({display:"block"});
+                $('.errorMsg').html(str);
+            }
+            setTimeout(function(){
+                var j = 0;
+                for ( j in errors) {
+                    errors[j].element.style.borderColor = '#bdc3c7';
+                }
+            },3000)
+        }
+    })
+</script>
+  </body>
+</html>

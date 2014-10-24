@@ -1,0 +1,59 @@
+<!-- 这里显示 网站截图 -->
+<div class="bs-example overHidden clearBoth  layoutCenter" style="max-width:900px;padding-top:100px;" >
+    <div class="bs-example overHidden  layoutLeft" style="border-right: 3px solid #ddd;width: 200px;height: 400px" >
+        <ul>
+            <li><a href="">个人中心</a></li>
+            <li><a href="">安全设置</a></li>
+            <li><a href="">交易成功</a></li>
+            <li><a href="">购物车</a></li>
+            <li><a href="">推广</a></li>
+        </ul>
+    </div>
+
+    <div class="bs-example overHidden   layoutRight" style="width:700px;" >
+
+            <div style="margin-bottom:30px;border-bottom:3px solid #ddd;">
+                <?='tipTitle'?>
+            </div>
+            <div class="single-panel-body">
+                <div class="single-panel-section" ng-show="show_signup">
+                    <form  name="register_form"  class="form-horizontal wt-form " method="post" action="/account/register">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">用户名：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" id="username" type="text" placeholder="由字母、数字、下划线组成，以字母开头" name="signup_name" ng-model="signup_name" wt-remote-unique-check="{url:'/api/user/name/check?name='}" wt-regex="^[A-Za-z]{1}[0-9A-Za-z_]{2,29}$" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">邮箱：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" type="email" placeholder="输入常用邮箱" name="signup_email" ng-model="signup_email" required="" wt-remote-unique-check="{url:'/api/user/email/check?email='}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">密码：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" type="password" placeholder="最小长度6位" name="signup_password" name="pass" ng-model="signup_password" ng-minlength="6" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">重复密码：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" type="password" placeholder="再输入一次" name="repeated_password" wt-repeat-password="signup_password" ng-model="repeated_password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-3"></div>
+                            <div class="col-xs-7">
+                                <button name="button" wt-form-submit="js_submit(register_form)" type="submit" class="btn btn-primary" data-loading-text="注册中..." loading-status="is_registering">注册新用户
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!-- right end -->
+
+</div><!-- .rowParent end -->
+

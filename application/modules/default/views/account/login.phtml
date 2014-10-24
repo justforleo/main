@@ -1,0 +1,92 @@
+
+<!-- 这里显示 网站截图 -->
+<div class="bs-example overHidden clearBoth  layoutCenter" style="max-width:600px;" >
+ <div style="padding:10px;border:5px solid #eee;margin-top:100px;" >
+            <div style="margin-bottom:30px;border-bottom:3px solid #ddd;">
+                <h4>登录<small style="color:#ccc"></small></h4>
+            </div>
+            <div class="single-panel-body">
+                <div class="single-panel-section" ng-show="show_login">
+                    <form method="post" action="/default/account/login" name="login_form"  class="form-horizontal wt-form ">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">用户名：</label>
+                            <div class="col-xs-7">
+                                <input class="form-control" type="text" placeholder="Your Username" name="login_name" ng-model="login_name" wt-remote-unique-check="{url:'/api/user/name/check?name='}" wt-regex="^[A-Za-z]{1}[0-9A-Za-z_]{2,29}$" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">密码：</label>
+
+                            <div class="col-xs-7">
+                                <input class="form-control" type="password" placeholder="Your Password" name="login_password" ng-model="login_password" ng-minlength="6" required="">
+                            </div>
+                        </div>
+
+                         
+                         <div class="form-group ng-hide" ng-show="register_form.$errors.length > 0">
+                            <label class="col-xs-3 control-label"></label>
+                        </div>
+                        <div class="form-group btn-danger errorMsgBox" style="display: none">
+                            <label class="col-xs-3 control-label">错误信息：</label>
+                            <label class="text-left col-xs-7 errorMsg">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label"></label>
+                            <div class="col-xs-2">
+                                <button type="submit" class="btn btn-primary btn-app" data-loading-text="登录中...">登录</button>
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="button" class="btn btn-primary" data-loading-text="登录中...">注册</button>
+                            </div>
+                            <label class="col-xs-3 control-label"><a href="/index/getpassword">找回密码</a></label>
+                        </div>
+                    </form>
+                </div>
+        </div>
+</div>
+</div><!-- .rowParent end -->
+    <script src="/static/faltui/js/jquery-1.8.3.min.js"></script>
+    <script src="/static/default/js/validate.js"></script>
+<script>
+    $(function(){
+        var validate = new FormValidator('login_form',[
+            {
+                names:['login_name','login_password'],
+                display:{
+                    login_name:[
+                        '用户名不能为空',
+                        '用户名不能小于6位',
+                        '用记名不能大于18位'
+                    ],
+                    login_password:[
+                        '密码不能为空',
+                        '密码不能小于6位',
+                        '密码不能大于18位'
+                    ]
+                },
+                rules:'required|min_length[6]|max_length[18]'
+            }
+        ],validateErrorCallback);
+        function validateErrorCallback(errors)
+        {
+            var i = 0;
+            var str = '';
+            for(i in errors) {
+                var obj = errors[i].element;
+                obj.style.borderColor = '#e74c3c';
+                str += errors[i].message + '<br>';
+                $('.errorMsgBox').css({display:"block"});
+                $('.errorMsg').html(str);
+            }
+            setTimeout(function(){
+                var j = 0;
+                for ( j in errors) {
+                    errors[j].element.style.borderColor = '#bdc3c7';
+                }
+            },3000)
+        }
+    });
+</script>
+

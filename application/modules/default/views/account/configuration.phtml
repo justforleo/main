@@ -1,0 +1,64 @@
+
+<!-- Loading Flat UI -->
+<link href="/static/faltui/css/flat-ui.css" rel="stylesheet">
+<link href="/static/default/style.css" rel="stylesheet">
+<script src="/static/faltui/js/jquery-1.8.3.min.js"></script>
+<script src="/static/faltui/js/jquery.tagsinput.js"></script>
+<script>
+$(function() {
+
+  $('#tag').tagsInput();
+  $('a.btn').click(function()
+  {
+    if(!$("#tag").tagExist($(this).text()))
+      {
+          $('#tag').addTag($(this).text());
+      }
+  })
+})
+</script>
+
+<div style="position:fixed;bottom:0;width:100%" >
+  <div id="tag" class="tagsinput"></div>
+  <input type="button" class="btn btn-primary btn-lg btn-block" value="购买">
+</div>
+<div class="row max-width layoutCenter">
+
+        <div class="col-xs-3">
+          <div class="tile">
+            <img src="/static/faltui/images/icons/svg/compas.svg" alt="Compas" class="tile-image big-illustration">
+            <h3 class="tile-title">Web Oriented</h3>
+            <p>100% convertable to HTML/CSS layout.</p>
+            <a class="btn btn-primary btn-large btn-block" href="#">Get Pro</a>
+          </div>
+        </div>
+
+        <div class="col-xs-3">
+          <div class="tile">
+            <img src="/static/faltui/images/icons/svg/loop.svg" alt="Infinity-Loop" class="tile-image">
+            <h3 class="tile-title">Easy to Customize</h3>
+            <p>Vector-based shapes and minimum of layer styles.</p>
+            <a class="btn btn-primary btn-large btn-block" href="#">会员功能s</a>
+          </div>
+        </div>
+
+        <div class="col-xs-3">
+          <div class="tile">
+            <img src="/static/faltui/images/icons/svg/pencils.svg" alt="Pensils" class="tile-image">
+            <h3 class="tile-title">Color Swatches</h3>
+            <p>Easy to add or change elements. </p>
+            <a class="btn btn-primary btn-large btn-block" href="#">会员功能</a>
+          </div>
+        </div>
+
+        <div class="col-xs-3">
+          <div class="tile "><!-- tile-hot -->
+            <img src="/static/faltui/images/icons/svg/chat.svg" alt="Chat" class="tile-image">
+            <h3 class="tile-title">Free for Share</h3>
+            <p>Your likes, shares and comments helps us.</p>
+            <a class="btn btn-primary btn-large btn-block" href="#">景深功能</a>
+          </div>
+
+        </div>
+      </div>
+
